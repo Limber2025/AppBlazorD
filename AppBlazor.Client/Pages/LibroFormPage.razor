@@ -1,4 +1,5 @@
 ﻿@page "/formLibro"
+@inject NavigationManager navigationManager
 <h3>LibroFormPage</h3>
 <EditForm Model="@oLibroFormCLS" OnValidSubmit="@guardar">
 	<DataAnnotationsValidator></DataAnnotationsValidator>
@@ -21,7 +22,7 @@
 	</div>
 	<div class="mt-3">
 		<button type="submit" class="btn btn-success">Guardar</button>
-		<button class="btn btn-danger">Regresar</button>
+		<button class="btn btn-danger" @onclick="@regresar">Regresar</button>
 	</div>
 </EditForm>
 @code {
@@ -29,5 +30,9 @@
 	private void guardar()
 	{
 		Console.WriteLine("Guardando");
+	}
+	private void regresar()
+	{
+		navigationManager.NavigateTo("/libro");
 	}
 }

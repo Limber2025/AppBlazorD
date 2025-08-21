@@ -15,7 +15,5 @@ namespace AppBlazor.Entities
 
         public string resumen { get; set; } = null!;
 
-        public int NroHojas { get; set; }
-
     }
 }

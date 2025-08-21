@@ -2,7 +2,34 @@
 @inject NavigationManager navigationManager
 <h3>LibroPage</h3>
 <button @onclick="navegar" class="btn btn-primary">Navegar a Libro Form Page</button>
+@if(lista != null && lista.Count!=0)
+{
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Titulo</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach(var item in lista)
+			{
+				<tr>
+					<td>@item.idlibro</td>
+					<td>@item.titulo</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+}
 @code {
+	public List<LibroListCLS> lista { get; set; } = new List<LibroListCLS>();
+	protected override Task OnInitializedAsync()
+	{
+		lista.Add(new LibroListCLS{idlibro = 1, titulo ="Libro 1"});
+		lista.Add(new LibroListCLS { idlibro = 2, titulo = "Libro 2" });
+		return base.OnInitializedAsync();
+	}
 	private void navegar()
 	{
 		navigationManager.NavigateTo("/formLibro");
